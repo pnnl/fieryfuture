@@ -1,0 +1,6 @@
+model_checkpoint_path: "4fold"
+all_model_checkpoint_paths: "0fold"
+all_model_checkpoint_paths: "1fold"
+all_model_checkpoint_paths: "2fold"
+all_model_checkpoint_paths: "3fold"
+all_model_checkpoint_paths: "4fold"
