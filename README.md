@@ -27,14 +27,14 @@ $ conda env create -f fiery.yml
         + create_slurm.py: Script that makes slurm dispatch files for splitting the experimental runs across gpus on marianas
         + split_{dnn, rnn}.py: Experimental script that runs a subset of experiments
         + ex_{dnn, rnn, lr, rf}_classify.py: For running all experiments on a single gpu sequentially 
-+ mapping: 
++ mapping/
     - dnn_d4_models/: Best performing DNN models
     - map_slurm_runs/
         + create_slurm.py: Creates slurm dispatch scripts for making the final map. Need to manually create fold{0,1,2,3,4} folders and logs subfolders
     - array_to_img.py: Create displayable image from large numpy array
     - make_image.slurm: Slurm job script for creating map image
     - make_map_matrix.py: Create a matrix of values for mapping from output of prediction model.
-+ results_and_analysis:
++ results_and_analysis/
     - results.ipynb: Digests results from allruns/ to find best performing models and associated metrics
     - allruns/: Files recording performance of all model runs
     - dnn_training/: training results for best performing DNN models
@@ -49,6 +49,9 @@ $ conda env create -f fiery.yml
 + idxs: 
     - cross_val_idxs.npy: Indexes for cross validation split of 80% of the field data
     - test_idxs.npy: Indexes for held out test data.
++ spatial/
+    - kfold_consensus_gte3_masked *.tif | *.clr: GeoTiff (with colormap) depicting predicted cheatgrass distribution based on >=3 k-fold consensus
+    - kfold_consensus_masked *.tif | *.clr: GeoTiff (with colormap) depicting predicted cheatgrass distribution for all k-folds
     
 ## Abstract
 Cheatgrass (Bromus tectorum) invasion is driving an emerging cycle of increased fire frequency and irreversible loss of wildlife habitat in the western US. Yet, detailed spatial information about its occurrence is still lacking for much of its presumably invaded range. Here, we provide code and training data used to develop Deep Neural Network, Joint Recurrent Neural Network, Random Forest, and Logistic Regression models  presented in Larson and Tuor (2021; see *Associated Publication*). Resultant maps produced from the best performing model are also included.
