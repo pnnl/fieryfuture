@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20200310</CreaDate><CreaTime>13535600</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.6\ArcToolbox\Toolboxes\Spatial Analyst Tools.tbx\Con" Date="20200310" Time="135356">Con brte_mask_30m_sghr.tif kfold_consensus.tif G:\projects\fiery_future\results\kfold\consensus\kfold_consensus_masked.tif 0 "VALUE = 1"</Process></lineage></DataProperties></Esri></metadata>
