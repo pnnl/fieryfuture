@@ -1,10 +1,11 @@
 import os
-# import argparse
-#
-# parser = argparse.ArgumentParser()
-# parser.add_argument('-allocation', type=str, help='Allocation name for billing', default='deepmpc')
-#
-# args = parser.parse_args()
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-allocation', type=str, help='Allocation name for billing')
+parser.add_argument('-mapping_code_path', type=str, help='Allocation name for billing')
+parser.add_argument('-data_path', type=str, help='Allocation name for billing')
+args = parser.parse_args()
 
 template = '#!/bin/bash\n' +\
            '#SBATCH -A deepmpc\n' +\
@@ -24,11 +25,11 @@ template = '#!/bin/bash\n' +\
 
 for fold in range(5):
     for piece in range(25):
-        cmd = 'python /people/tuor369/gitland/fiery/code/models/map_classify_dnn.py ' +\
-              '/pic/projects/deepscience/data/fieryfuture/fullextent30/clean_feb_field_data.csv ' +\
-              '/pic/projects/deepscience/data/fieryfuture/fullextent30/withnan_subset_hdf5/%s_fullextent_30_marianas.hdf5 ' % piece +\
+        cmd = 'python %s/map_classify_dnn.py ' % args.mapping_code_path +\
+              '%s/clean_jan_field_data.csv ' % args.data_path +\
+              '%s/%s_fullextent_30_marianas.hdf5 ' % (args.data_path, piece) +\
               '%s_dnn_30m_results.npy ' % piece +\
-              '/people/tuor369/gitland/fire/mapping/dnn_d4_models/%sfold ' % fold +\
+              '%s/%sfold ' % (args.data_path, fold) +\
               '-res 30m'
         # cmd = 'python split_dnn_exp.py -partition %s -start %s ' % (args.part, start)
         with open('fold%s/%s_dnn_30m.slurm' % (fold, piece), 'w') as cmdfile: # unique name for sbatch script

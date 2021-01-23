@@ -5,6 +5,13 @@ This repo is python 2 with an older version of Tensorflow. Details can be found 
 ## Setup
 $ conda env create -f fiery.yml
 
+## Steps to reproduce experiments performed in the publication
+1. Run all four experiment scripts contained in exp folder
+2. Move experimental output, exp/{DNN, LR, RF, RNN}/{d1, d2, d3, d4}/experiment_log.txt,
+   for each model and data partition to results_and_analysis/allruns folder, renaming the logfiles to:
+   ex. d1dnn.csv
+3. Run results.ipynb in order to determine the best performing runs from the experiments and view/analyze results.   
+
 ## Files
 + classify_dnn.py
     - Script for running a single DNN experiment
@@ -12,20 +19,16 @@ $ conda env create -f fiery.yml
     - Script for running a single Logistic Regression experiment
 + classify_rnn.py
     - Script for running a single RNN experiment
++ classify_rf.py
+    - Script for running a single Random Forest experiment
 + graph_training_utils.py
     - Helper functions for boilerplate tensorflow training code
 + tf_ops.py
     - Tensorflow neural network modules
 + util.py 
     - There is a Batcher object that gets imported for batch gradient descent
-+ best_get.py
-    - This script is for going through the output files on remote runs to track down the best performing model.
-    - It is a stop gap as I forgot to record the run number in the main output files so it goes through all the predictions
-    - for model runs and recalculates the metrics. 
 + exp/
-    - {DNN, RNN, LR, RF} Since the DNN and RNN models take longer to train there is a little difference between them and LR, RF
-        + create_slurm.py: Script that makes slurm dispatch files for splitting the experimental runs across gpus on marianas
-        + split_{dnn, rnn}.py: Experimental script that runs a subset of experiments
+    - {DNN, LR, RF, RNN}/
         + ex_{dnn, rnn, lr, rf}_classify.py: For running all experiments on a single gpu sequentially 
 + mapping: 
     - dnn_d4_models/: Best performing DNN models
@@ -36,18 +39,14 @@ $ conda env create -f fiery.yml
     - make_map_matrix.py: Create a matrix of values for mapping from output of prediction model.
 + results_and_analysis:
     - results.ipynb: Digests results from allruns/ to find best performing models and associated metrics
-    - allruns/: Files recording performance of all model runs
-    - dnn_training/: training results for best performing DNN models
-    - pics/: plots
+    - allruns/: CSV files recording cross validation, test performance, and hyper parameters of all model runs. 
     - predictions: Predictions for all best performing models for all data subsets. Numpy arrays with shape=(number_data_points, 4):
         + index 1: data point unique id
         + index 2: data point ground truth cheatgrass coverage estimate
         + index 3: model prediction for probability < 2% cheatgrass coverage
         + index 4: model prediction for probability >= 2% cheatgrass coverage
-    - plot_roc.py: Plot roc curves
-    - plot_training.py: Plot DNN training curves
 + idxs: 
-    - cross_val_idxs.npy: Indexes for cross validation split of 80% of the field data
+    - cross_val_idxs.npy: Indexes for 5-fold cross validation split of 80% of the field data
     - test_idxs.npy: Indexes for held out test data.
     
 ## Abstract
