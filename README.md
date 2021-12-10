@@ -56,7 +56,7 @@ $ conda env create -f fiery.yml
 Cheatgrass (Bromus tectorum) invasion is driving an emerging cycle of increased fire frequency and irreversible loss of wildlife habitat in the western US. Yet, detailed spatial information about its occurrence is still lacking for much of its presumably invaded range. Here, we provide code and training data used to develop Deep Neural Network, Joint Recurrent Neural Network, Random Forest, and Logistic Regression models  presented in Larson and Tuor (2021; see *Associated Publication*). Resultant maps produced from the best performing model are also included.
 
 ## Associated Publication
-Larson, K.B. and A.R. Tuor. *[In Review]*. Deep learning classification of cheatgrass invasion in the Western United States using biophysical and remote sensing data. *Remote Sensing*.
+Larson, K.B. and A.R. Tuor. 2021. Deep learning classification of cheatgrass invasion in the Western United States using biophysical and remote sensing data. *Remote Sensing* 13(7), 1246; [https://doi.org/10.3390/rs13071246](https://doi.org/10.3390/rs13071246).
 
 ## Notice
 This material was prepared as an account of work sponsored by an agency of the United States Government.  Neither the United States Government nor the United States Department of Energy, nor Battelle, nor any of their employees, nor any jurisdiction or organization that has cooperated in the development of these materials, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness or any information, apparatus, product, software, or process disclosed, or represents that its use would not infringe privately owned rights.
